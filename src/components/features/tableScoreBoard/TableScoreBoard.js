@@ -23,7 +23,7 @@ export function TableScoreBoard({data}) {
                     <img src={showFlag(el.flagCodeHomeT)} alt={el.homeTeamName}/>
                     {el.homeTeamName}
                 </td>
-                <td>{el.score}</td>
+                <td>{`${el.scoreHomeTeam} - ${el.scoreAwayTeam}`}</td>
                 <td>
                     {el.awayTeamName}
                     <img src={showFlag(el.flagCodeAwayT)} alt={el.awayTeamName}/>
