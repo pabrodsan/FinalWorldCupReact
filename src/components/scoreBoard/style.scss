@@ -1,0 +1,16 @@
+.container {
+    display: flex; /* or inline-flex */
+    justify-content: center;
+    font-size: 25px;
+}
+
+.buttonStartGame {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    
+}
+
+.scoreBoard {
+    text-align: center;
+}
