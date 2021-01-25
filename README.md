@@ -1,7 +1,7 @@
 
 # Final world cup. React JS
 
-## Tecnologías utilizadas
+## Used technology
 
 * React
 * React-redux
