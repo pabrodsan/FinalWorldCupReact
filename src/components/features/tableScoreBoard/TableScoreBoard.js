@@ -4,6 +4,15 @@ import Button from 'react-bootstrap/Button';
 import { updateScore, finishGame } from '../../scoreBoard/scoreBoardSlice';
 import { useDispatch } from 'react-redux';
 import './style.scss';
+import {
+    UPDATE_SCORE, 
+    FINISH_MATCH,
+    HOME_TEAM,
+    SCORE,
+    AWAY_TEAM,
+    ACTIONS
+
+} from '../../../constants/Constants';
 
 function TableScoreBoard({data, acctions}) {
     const dispatch = useDispatch();
@@ -27,8 +36,8 @@ function TableScoreBoard({data, acctions}) {
                 {acctions && (
                     <td>
                         <div className="buttons">
-                            <Button onClick={() => {dispatch(updateScore(el.id))}}>Update score</Button>
-                            <Button variant="danger" onClick={() => {dispatch(finishGame(el.id))}}>Finish match</Button>
+                            <Button onClick={() => {dispatch(updateScore(el.id))}}>{UPDATE_SCORE}</Button>
+                            <Button variant="danger" onClick={() => {dispatch(finishGame(el.id))}}>{FINISH_MATCH}</Button>
                         </div>
                     </td>
                 )}
@@ -39,12 +48,12 @@ function TableScoreBoard({data, acctions}) {
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>Home Team</th>
-                    <th>Score</th>
-                    <th>Away Team</th>
+                    <th>{HOME_TEAM}</th>
+                    <th>{SCORE}</th>
+                    <th>{AWAY_TEAM}</th>
                     {
                         acctions && (
-                            <th>Actions</th>
+                            <th>{ACTIONS}</th>
                         )
                     }
                 </tr>

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import './style.scss'
 import { selectMatch, starGame } from './scoreBoardSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { START_GAME } from '../../constants/Constants';
 
 function ScoreBoard() {
     
@@ -19,7 +20,7 @@ function ScoreBoard() {
     return (
         <div>
             <div className="buttonStartGame">
-                <Button variant="success" onClick={() => newStartGarme()} >Start a game </Button>
+                <Button variant="success" onClick={() => newStartGarme()} >{START_GAME}</Button>
             </div>
             {match.length > 0 ? (
                 <div className="container">

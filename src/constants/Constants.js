@@ -1,3 +1,24 @@
+// Tags
+export const HOME = "home";
+export const AWAY = "away";
+
+// Buttons
+export const START_GAME = "Start a game";
+export const UPDATE_SCORE= "Update score";
+export const FINISH_MATCH= "Finish match";
+
+// Table
+export const HOME_TEAM= "Home team";
+export const SCORE= "Score";
+export const AWAY_TEAM= "Away team";
+export const ACTIONS= "Actions";
+
+// Navbar
+export const TITLE = "Final World Cup";
+export const SCORE_BOARD_NAV = "Score Board";
+export const SUMMARY_NAV = "Summary";
+
+
 export const TEAMS_COLLECIONS = [
     {
         id: 1,

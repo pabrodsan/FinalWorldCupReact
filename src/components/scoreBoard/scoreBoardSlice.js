@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getRandomTeam } from '../features/utils/Utils';
-import { TEAMS_COLLECIONS } from '../../constants/Constants';
-import moment from 'moment';
+import { TEAMS_COLLECIONS, HOME, AWAY } from '../../constants/Constants';
 
 export const scoreBoardSlice = createSlice({
   name: 'teams',
@@ -11,8 +10,8 @@ export const scoreBoardSlice = createSlice({
   },
   reducers: {
     starGame: (state, action) => {
-      const homeTeam = getRandomTeam(TEAMS_COLLECIONS, "home"); 
-      const awayTeam = getRandomTeam(TEAMS_COLLECIONS, "away");
+      const homeTeam = getRandomTeam(TEAMS_COLLECIONS, HOME); 
+      const awayTeam = getRandomTeam(TEAMS_COLLECIONS, AWAY);
       state.startedMatch.push({
         id: action.payload,
         homeTeamName: homeTeam.name,
