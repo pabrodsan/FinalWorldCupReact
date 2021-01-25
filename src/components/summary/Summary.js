@@ -15,7 +15,12 @@ function Summary() {
         if (totalScoreA < totalScoreB) {
             return 1
         }
-        return 0;
+        if (totalScoreA === totalScoreB) {
+            if (a.id < b.id) {
+                return 1
+            }
+            return -1
+        }
     })    
     return (
         <div>

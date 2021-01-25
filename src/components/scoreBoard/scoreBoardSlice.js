@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getRandomTeam } from '../features/utils/Utils';
 import { TEAMS_COLLECIONS } from '../../constants/Constants';
+import moment from 'moment';
 
 export const scoreBoardSlice = createSlice({
   name: 'teams',
@@ -19,7 +20,7 @@ export const scoreBoardSlice = createSlice({
         flagCodeHomeT: homeTeam.flagCode,
         flagCodeAwayT: awayTeam.flagCode,
         scoreHomeTeam: 0,
-        scoreAwayTeam: 0
+        scoreAwayTeam: 0,
       })
     },
     
