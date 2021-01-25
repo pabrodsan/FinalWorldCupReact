@@ -2,7 +2,9 @@ import React from 'react'
 import { summaryMatchState } from '../scoreBoard/scoreBoardSlice';
 import { useSelector } from 'react-redux';
 import TableScoreBoard from '../features/tableScoreBoard/TableScoreBoard';
+import Alert from 'react-bootstrap/Alert'
 import './style.scss';
+import { MSG_TITLE_SUMMARY } from '../../constants/Constants';
 
 function Summary() {
     const summary = useSelector(summaryMatchState);
@@ -25,11 +27,18 @@ function Summary() {
     })    
     return (
         <div>
-            {summary.length > 0 && (
+            {summary.length > 0 ? (
                 <div className="container">
                     <TableScoreBoard
                         data={summarySort}
                     />
+                </div>
+            ): (
+                <div className="container">
+                    <Alert variant="success">
+                        <Alert.Heading>{MSG_TITLE_SUMMARY}</Alert.Heading>
+                    </Alert>
+                    
                 </div>
             )}
         </div>

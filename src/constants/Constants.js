@@ -18,6 +18,12 @@ export const TITLE = "Final World Cup";
 export const SCORE_BOARD_NAV = "Score Board";
 export const SUMMARY_NAV = "Summary";
 
+// Title score board
+export const MSG_TITLE = "No matches started";
+export const MSG_SUBTITLE = "Press \"start a game\" to generate a match";
+
+// title summary
+export const MSG_TITLE_SUMMARY = "No match has been finished";
 
 export const TEAMS_COLLECIONS = [
     {

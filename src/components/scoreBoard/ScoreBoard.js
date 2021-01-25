@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button'
 import './style.scss'
 import { selectMatch, starGame } from './scoreBoardSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { START_GAME } from '../../constants/Constants';
+import { START_GAME, MSG_TITLE, MSG_SUBTITLE } from '../../constants/Constants';
+import Alert from 'react-bootstrap/Alert'
 
 function ScoreBoard() {
     
@@ -29,7 +30,20 @@ function ScoreBoard() {
                         acctions={true}
                     />
                 </div>
-            ): null}
+            ): (
+                <div className="container">
+                    <Alert variant="success">
+                        <Alert.Heading>{MSG_TITLE}</Alert.Heading>
+                            <hr/>
+                            <p>
+                                {MSG_SUBTITLE}
+                            </p>
+                    </Alert>
+                    
+                </div>
+            )
+            
+            }
         </div>
     )
 }
