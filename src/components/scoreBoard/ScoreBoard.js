@@ -25,6 +25,7 @@ function ScoreBoard() {
                 <div className="container">
                     <TableScoreBoard
                         data={match}
+                        acctions={true}
                     />
                 </div>
             ): null}

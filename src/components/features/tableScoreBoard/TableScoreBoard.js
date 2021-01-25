@@ -1,11 +1,11 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { updateScore } from '../../scoreBoard/scoreBoardSlice';
+import { updateScore, finishGame } from '../../scoreBoard/scoreBoardSlice';
 import { useDispatch } from 'react-redux';
 import './style.scss';
 
-function TableScoreBoard({data}) {
+function TableScoreBoard({data, acctions}) {
     const dispatch = useDispatch();
 
     const showFlag = (codeFlag) => {
@@ -24,12 +24,14 @@ function TableScoreBoard({data}) {
                     {el.awayTeamName}
                     <img src={showFlag(el.flagCodeAwayT)} alt={el.awayTeamName}/>
                 </td>
-                <td>
-                    <div className="buttons">
-                        <Button onClick={() => {dispatch(updateScore(el.id))}}>Update score</Button>
-                        <Button variant="danger" onClick={() => {}}>Finish match</Button>
-                    </div>
-                </td>
+                {acctions && (
+                    <td>
+                        <div className="buttons">
+                            <Button onClick={() => {dispatch(updateScore(el.id))}}>Update score</Button>
+                            <Button variant="danger" onClick={() => {dispatch(finishGame(el.id))}}>Finish match</Button>
+                        </div>
+                    </td>
+                )}
             </tr>
         )
     });
@@ -40,7 +42,11 @@ function TableScoreBoard({data}) {
                     <th>Home Team</th>
                     <th>Score</th>
                     <th>Away Team</th>
-                    <th>Actions</th>
+                    {
+                        acctions && (
+                            <th>Actions</th>
+                        )
+                    }
                 </tr>
             </thead>
             <tbody>

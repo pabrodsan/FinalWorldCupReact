@@ -36,15 +36,24 @@ export const scoreBoardSlice = createSlice({
         }
       });
       state.startedMatch = updateMatch;
+    },
+
+    finishGame: (state, action) => {
+      const matchSelectd = state.startedMatch.find(el => el.id === action.payload);
+
+      const filterMatch = state.startedMatch.filter(el => el.id !== matchSelectd.id);
+      state.summaryMatch.push(matchSelectd);
+      state.startedMatch = filterMatch;
     }
   },
 });
 
-export const { starGame, updateScore } = scoreBoardSlice.actions;
+export const { starGame, updateScore, finishGame } = scoreBoardSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectMatch = state => state.scoreBoard.startedMatch;
+export const summaryMatchState = state => state.scoreBoard.summaryMatch;
 
 export default scoreBoardSlice.reducer;
