@@ -9,10 +9,11 @@ export const scoreBoardSlice = createSlice({
     summaryMatch: []
   },
   reducers: {
-    starGame: state => {
+    starGame: (state, action) => {
       const homeTeam = getRandomTeam(TEAMS_COLLECIONS, "home"); 
       const awayTeam = getRandomTeam(TEAMS_COLLECIONS, "away");
       state.startedMatch.push({
+        id: action.payload,
         homeTeamName: homeTeam.name,
         awayTeamName: awayTeam.name,
         flagCodeHomeT: homeTeam.flagCode,
@@ -22,27 +23,28 @@ export const scoreBoardSlice = createSlice({
       })
     },
     
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
+    updateScore: (state, action) => {
+      const updateMatch = state.startedMatch.map((el) => {
+        if (el.id === action.payload) {
+          return {
+            ...el, 
+            scoreHomeTeam: Math.floor(Math.random() * 10),
+            scoreAwayTeam: Math.floor(Math.random() * 10)
+          }
+        } else {
+          return el
+        }
+      });
+      state.startedMatch = updateMatch;
+    }
   },
 });
 
-export const { starGame, decrement, incrementByAmount } = scoreBoardSlice.actions;
-
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched
-export const incrementAsync = amount => dispatch => {
-  setTimeout(() => {
-    dispatch(incrementByAmount(amount));
-  }, 1000);
-};
+export const { starGame, updateScore } = scoreBoardSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
-export const selectCount = state => state.scoreBoard.startedMatch;
+export const selectMatch = state => state.scoreBoard.startedMatch;
 
 export default scoreBoardSlice.reducer;

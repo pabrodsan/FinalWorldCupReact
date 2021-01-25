@@ -1,17 +1,13 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-// import { useSelector, useDispatch } from 'react-redux';
-// import {
-//     decrement,
-//     increment,
-//     incrementByAmount,
-//     incrementAsync,
-//     selectCount,
-//   } from './counterSlice';
-import './style.scss'
+import Button from 'react-bootstrap/Button';
+import { updateScore } from '../../scoreBoard/scoreBoardSlice';
+import { useDispatch } from 'react-redux';
+import './style.scss';
 
-export function TableScoreBoard({data}) {
-    console.log(data);
+function TableScoreBoard({data}) {
+    const dispatch = useDispatch();
+
     const showFlag = (codeFlag) => {
         return `https://www.countryflags.io/${codeFlag}/flat/64.png`
     }
@@ -28,7 +24,12 @@ export function TableScoreBoard({data}) {
                     {el.awayTeamName}
                     <img src={showFlag(el.flagCodeAwayT)} alt={el.awayTeamName}/>
                 </td>
-
+                <td>
+                    <div className="buttons">
+                        <Button onClick={() => {dispatch(updateScore(el.id))}}>Update score</Button>
+                        <Button variant="danger" onClick={() => {}}>Finish match</Button>
+                    </div>
+                </td>
             </tr>
         )
     });
@@ -39,6 +40,7 @@ export function TableScoreBoard({data}) {
                     <th>Home Team</th>
                     <th>Score</th>
                     <th>Away Team</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
