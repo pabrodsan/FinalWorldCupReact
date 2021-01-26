@@ -8,6 +8,8 @@ import { MSG_TITLE_SUMMARY } from '../../constants/Constants';
 
 function Summary() {
     const summary = useSelector(summaryMatchState);
+    
+    // We order from the match with the most goals to the one with the least and in the event of a tie, the most recently created match
     const summarySort = [...summary].sort((a,b) => {
         const totalScoreA = a.scoreHomeTeam + a.scoreAwayTeam;
         const totalScoreB = b.scoreHomeTeam + b.scoreAwayTeam;

@@ -1,7 +1,9 @@
+// get random value between min and max
 function getRndInteger (min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+// get a random team.
 export function  getRandomTeam (collection, sideTeam) {
     let randomIndex;
     if (sideTeam === "home") {

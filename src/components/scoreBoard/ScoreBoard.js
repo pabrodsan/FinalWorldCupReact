@@ -9,7 +9,9 @@ import Alert from 'react-bootstrap/Alert'
 
 function ScoreBoard() {
     
+    // We obtain the value of the matches of redux
     const match = useSelector(selectMatch);
+    
     const dispatch = useDispatch();
     const [id, setId] = useState(1);
 

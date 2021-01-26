@@ -9,6 +9,8 @@ export const scoreBoardSlice = createSlice({
     summaryMatch: []
   },
   reducers: {
+
+    // This reducer creates a match in the array
     starGame: (state, action) => {
       const homeTeam = getRandomTeam(TEAMS_COLLECIONS, HOME); 
       const awayTeam = getRandomTeam(TEAMS_COLLECIONS, AWAY);
@@ -23,6 +25,7 @@ export const scoreBoardSlice = createSlice({
       })
     },
     
+    // This reducer updates the score of the selected match
     updateScore: (state, action) => {
       const updateMatch = state.startedMatch.map((el) => {
         if (el.id === action.payload) {
@@ -38,9 +41,9 @@ export const scoreBoardSlice = createSlice({
       state.startedMatch = updateMatch;
     },
 
+    // This reducer ends the selected match so that it stops appearing on the scoreboard and goes to the summary
     finishGame: (state, action) => {
       const matchSelectd = state.startedMatch.find(el => el.id === action.payload);
-
       const filterMatch = state.startedMatch.filter(el => el.id !== matchSelectd.id);
       state.summaryMatch.push(matchSelectd);
       state.startedMatch = filterMatch;
